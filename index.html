@@ -1,0 +1,293 @@
+<html>
+<!--CALCULADORA PARA CONVERTER REAL PARA OUTRAS MOEDAS-->
+
+<head>
+	<title>Calculadora para converter moedas</title>
+	<style>
+		body{
+			<!--background-image:url("24272717-Coins-like-Euro-Swiss-Franc-Pound-and-Rubel-forming-a-background-Stock-Photo.jpg");-->
+			
+		}	
+	
+		#div1{
+			border:1px solid black;
+			width:45%;
+			height:65%;
+			background-color:Bisque;
+			position:absolute;
+			left:27%;
+			border-radius:15px;
+		}
+		
+		#div2{
+			position:relative;
+			left:19%;
+			top:3.5%;
+			font-family:tahoma;
+			font-size:15px;
+		}
+		
+		#div3{
+			position:relative;
+			left:53%;
+			top:-6%;
+			font-family:tahoma;
+			font-size:15px;
+		}
+		
+		#text3{
+			font-size:12px;
+		}
+		
+		h1{
+			font-family:tahoma;
+			font-size:30px;
+		}
+		
+		#btn1{
+			position:relative;
+			left:32%;
+			width:15%;
+			height:12%;
+			font-family:tahoma;			                
+      border-radius:5px;
+      background:#1c72dc;
+			font-weight:bold;
+      background-color:Lime;
+			
+		}
+		
+		#btn2{
+			position:relative;
+			left:35%;
+			width:15%;
+			height:12%;
+			font-family:tahoma;			                
+      border-radius:5px;
+			background:#1c72dc;
+			font-weight:bold;	
+      background-color:Lime;		
+		}
+		
+		#btn1:hover, #btn2:hover{
+			background:#00FA9A;                              
+            border:1px solid black;                
+            -moz- box-shadow:0 3px 10px 0 #CCC;
+            -webkit- box-shadow:0 3px 10px 0 #ccc;
+            text-shadow:0px 0px 5px #fff;
+            -webkit - transform: translateX(-10px);
+                        
+				
+		}
+		
+		#div4{
+			position:relative;
+			left:-1%;
+			top:6%;
+			text-align:center;
+		}
+		
+		#resultado{
+			font-family:tahoma;
+			font-size:18px;
+			font-weight:bold;
+		}
+		
+		h1{
+			color:ForestGreen;
+		}
+		
+		li{
+			font-size:12px;
+		}
+		
+		#div5{
+			position:relative;
+			top:15%;
+		}
+		
+		#valorFinal{
+			font-size:20px;
+		}
+		
+	</style>
+</head>
+<body>	
+	<form>
+		<div id="div1">
+			<center><h1>Conversão de real para outras moedas</h1></center>
+			
+			<!--OPÇÕES DE MOEDAS PARA CONVERTER-->
+			<div id="div2">
+				<b><label id="text1">Converter para: </label></b><br />
+				<select id="opções">
+					<option></option>
+					<option value="3">Dólar Australiano</option>
+					<option value="4">Euro</option>
+					<option value="1">Dólar Americano</option>
+					<option value="2">Dólar Canadense</option>
+					<option value="5">Libra Esterlina</option>
+					<option value="7">Peso Argentino</option>
+					<option value="6">Iene</option>
+					<option value="8">Peso Chileno</option>
+					<option value="9">Peso Uruguaio</option>
+					<option value="10">Bitcoin</option>
+					<option value="11">Franco Suíço</option>
+          <option value="12">Lira Turca</option>
+          <option value="13">Yuan</option>
+          <option value="14">Dolar Singapura</option>
+          <option value="15">Peso Mexicano</option>
+          <option value="16">Peso Filipino</option>
+          <option value="17">Rublo Russo</option>
+          
+				</select><br />
+			</div>
+			
+			<!--ENTRADA DO VALOR A SER CONVERTIDO-->
+			<div id="div3">
+				<b><label>Valor a ser convertido:</label></b><br />		
+				<input type="text" id="text2" />
+			</div>
+			
+			<!--botões CONVERTER E RESETAR-->
+			<input type="button" value="Converter" id="btn1" onClick="conversao()" />
+			<input type="reset" value="Limpar" id="btn2">
+			
+			<!--RESULTADO QUE SERÁ MOSTRADO NA TELA-->
+			<div id="div4">
+				<label id="resultado">Resultado:</label><br />
+				<span id="valorFinal"></span>
+			</div><br />
+			
+			<!--OBSERVAÇÕES-->
+			<div id="div5">
+				<ul>
+				<li>Não consegui pegar os valores em tempo real com a API</li>				
+				<li>Data da cotação: 23/06/2020
+
+        </li>
+			</ul>
+			</div>
+		</div>	
+	</form>	
+	
+	<script language="JavaScript">	
+		var valor;			
+		
+		
+		function conversao(){
+			var dolarAmericano = 5.15;
+			var dolarCanadense = 3.80;
+			var dolarAustraliano = 3.57;
+			var euro = 5.83;
+			var libra = 6.45;
+			var iene = 20.66; // multiplicar
+			var pesoArgentino = 0.074;
+			var pesoChileno = 159.01; // multiplicar
+			var pesoUruguaio = 0.12;
+			var bitcoin = 49468.95;
+			var francoSuico = 5.45; //multiplicar
+      var liraTurca = 0.75;
+      var yuan = 0.73;
+      var dolarSingapura = 3.70;
+      var pesoMexicano = 0.23;
+      var pesoFilipino = 0.10;
+      var rubloRusso = 13.35; //multiplicar
+			
+			valor = parseFloat(document.getElementById("text2").value);
+			var opcao = document.getElementById("opções").value;
+				
+			
+			if(isNaN(valor)){
+				alert("Apenas numeros devem ser informados");				
+			}	
+			
+			if(opcao==1){
+				document.getElementById("valorFinal").innerHTML = (valor/dolarAmericano).toFixed(2);			
+				
+			}
+			
+			if(opcao==2){
+				document.getElementById("valorFinal").innerHTML = (valor/dolarCanadense).toFixed(2);			
+				
+			}
+			
+			if(opcao==3){
+				document.getElementById("valorFinal").innerHTML = (valor/dolarAustraliano).toFixed(2);			
+				
+			}
+			
+			if(opcao==4){
+				document.getElementById("valorFinal").innerHTML = (valor/euro).toFixed(2);			
+				
+			}
+
+			if(opcao==5){
+				document.getElementById("valorFinal").innerHTML = (valor/libra).toFixed(2);			
+				
+			}
+
+			if(opcao==6){
+				document.getElementById("valorFinal").innerHTML = (valor*iene).toFixed(2);			
+				
+			}
+
+			if(opcao==7){
+				document.getElementById("valorFinal").innerHTML = (valor/pesoArgentino).toFixed(2);			
+				
+			}
+
+			if(opcao==8){
+				document.getElementById("valorFinal").innerHTML = (valor*pesoChileno).toFixed(2);			
+				
+			}
+
+			if(opcao==9){
+				document.getElementById("valorFinal").innerHTML = (valor/pesoUruguaio).toFixed(2);			
+				
+			}
+
+			if(opcao==10){
+				document.getElementById("valorFinal").innerHTML = (valor/bitcoin).toFixed(4);			
+				
+			}
+
+			if(opcao==11){
+				document.getElementById("valorFinal").innerHTML = (valor*francoSuico).toFixed(2);			
+				
+			}
+			
+			if(opcao==12){
+				document.getElementById("valorFinal").innerHTML = (valor/liraTurca).toFixed(2);			
+				
+			}
+
+      if(opcao==13){
+				document.getElementById("valorFinal").innerHTML = (valor/yuan).toFixed(2);			
+				
+			}	
+
+      if(opcao==14){
+				document.getElementById("valorFinal").innerHTML = (valor/dolarSingapura).toFixed(2);			
+				
+			}	
+
+      if(opcao==15){
+				document.getElementById("valorFinal").innerHTML = (valor/pesoMexicano).toFixed(2);			
+				
+			}
+
+      if(opcao==16){
+				document.getElementById("valorFinal").innerHTML = (valor/pesoFilipino).toFixed(2);			
+				
+			}
+
+      if(opcao==17){
+				document.getElementById("valorFinal").innerHTML = (valor*rubloRusso).toFixed(2);
+		}
+
+ }
+		
+	</script>
+</body>
+</html>
